@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
+import { env } from 'src/shared/config/env';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 
@@ -7,7 +8,7 @@ import { AuthService } from './auth.service';
   imports: [
     JwtModule.register({
       global: true,
-      secret: 'unsecure_jwt_secret',
+      secret: env.jwtSecret,
       signOptions: { expiresIn: '7d' },
     }),
   ],
