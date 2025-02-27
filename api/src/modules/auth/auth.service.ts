@@ -33,9 +33,9 @@ export class AuthService {
       throw new UnauthorizedException('Invalid crendetials');
     }
 
-    const acessToken = await this.generateAccessToken(user.id);
+    const accessToken = await this.generateAccessToken(user.id);
 
-    return { acessToken };
+    return { accessToken: accessToken };
   }
 
   async signup(signupDto: SignupDto) {
@@ -79,9 +79,9 @@ export class AuthService {
       },
     });
 
-    const acessToken = await this.generateAccessToken((await user).id);
+    const accessToken = await this.generateAccessToken((await user).id);
 
-    return { acessToken };
+    return { accessToken: accessToken };
   }
 
   private generateAccessToken(userId: string) {

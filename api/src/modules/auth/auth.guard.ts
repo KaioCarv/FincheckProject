@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import {
   CanActivate,
@@ -30,24 +31,27 @@ export class AuthGuard implements CanActivate {
 
     const request = context.switchToHttp().getRequest();
     const token = this.extractTokenFromHeader(request);
+
     if (!token) {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException('Missing access token.');
     }
+
     try {
       const payload = await this.jwtService.verifyAsync(token, {
         secret: env.jwtSecret,
       });
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       request['userId'] = payload.sub;
     } catch {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException('Invalid access token.');
     }
+
     return true;
   }
 
   private extractTokenFromHeader(request: Request): string | undefined {
     const [type, token] = request.headers.authorization?.split(' ') ?? [];
+
     return type === 'Bearer' ? token : undefined;
   }
 }
