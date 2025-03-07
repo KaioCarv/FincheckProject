@@ -1,3 +1,4 @@
+import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
 import { EyeIcon } from "../../../components/icons/EyeIcon";
 
 export function Accounts(){
@@ -18,10 +19,24 @@ export function Accounts(){
      </div>
 
       <div className="flex-1 flex flex-col justify-end">
-         <div>
+         <div className="flex items-center justify-between">
             <strong className="text-white tracking-[-1px] text-lg">
               Minhas contas
             </strong>
+            <div>
+              <button
+              className="py-3 pl-2.5 pr-3.5 rounded-full enabled:hover:bg-black/10 transition-colors disabled:opacity-40"
+              disabled
+              >
+                <ChevronLeftIcon className="text-white w-6 h-6"/>
+              </button>
+
+              <button
+              className="py-3 pl-2.5 pr-3.5 rounded-full enabled:hover:bg-black/10 transition-colors disabled:opacity-40"
+              >
+                <ChevronRightIcon className="text-white w-6 h-6"/>
+              </button>
+            </div>
          </div>
          <div>Contas....</div>
       </div>
