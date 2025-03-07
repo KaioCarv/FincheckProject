@@ -1,11 +1,11 @@
-export function CheckingIcon() {
+export function CheckingIcon(){
   return (
-    <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="1" y="1" width="42" height="42" rx="21" fill="#E9ECEF"/>
-      <path fillRule="evenodd" clipRule="evenodd" d="M27.0351 14.5391H16.9639C14.5276 14.5391 13 16.2641 13 18.7053V25.2933C13 27.7355 14.5198 29.4596 16.9639 29.4596H27.0342C29.4792 29.4596 31 27.7355 31 25.2933V18.7053C31 16.2641 29.4792 14.5391 27.0351 14.5391Z" stroke="#495057" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M13 19.834H31" stroke="#495057" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M17.1768 25.1699H20.1453" stroke="#495057" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-      <rect x="1" y="1" width="42" height="42" rx="21" stroke="white" strokeWidth="2"/>
-    </svg>
-  );
+<svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="1" y="1" width="40" height="40" rx="20" fill="#E9ECEF"/>
+    <rect x="1" y="1" width="40" height="40" rx="20" stroke="white" strokeWidth="2"/>
+    <path fillRule="evenodd" clipRule="evenodd" d="M26.0351 13.5391H15.9639C13.5276 13.5391 12 15.2641 12 17.7053V24.2933C12 26.7355 13.5198 28.4596 15.9639 28.4596H26.0342C28.4792 28.4596 30 26.7355 30 24.2933V17.7053C30 15.2641 28.4792 13.5391 26.0351 13.5391Z" stroke="#495057" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M12 18.8342H30" stroke="#495057" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M16.1768 24.1701H19.1453" stroke="#495057" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+</svg>
+  )
 }
