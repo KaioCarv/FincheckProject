@@ -6,7 +6,7 @@ import { CategoryIcon } from "../../../../components/icons/categories/CategoryIc
 export function Fab(){
   return(
    <div className="fixed right-4 bottom-4">
-       <DropdownMenu.Root>
+    <DropdownMenu.Root>
       <DropdownMenu.Trigger>
       <button className=" bg-teal-900 w-12 h-12 rounded-full flex items-center justify-center"
     >
