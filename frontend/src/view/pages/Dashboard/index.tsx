@@ -2,6 +2,7 @@ import { Logo } from "../../components/Logo";
 import { UserMenu } from "../../components/UserMenu";
 import { Accounts } from "./components/Accounts";
 import { DashboardProvider } from "./components/DashboardContext";
+import { NewAccountModal } from "./components/DashboardContext/modals/NewAccountModal";
 import { Fab } from "./components/Fab";
 import { Transactions } from "./components/Transactions";
 
@@ -26,6 +27,7 @@ export function Dashboard(){
           </main>
 
           <Fab/>
+          <NewAccountModal/>
         </div>
       </DashboardProvider>
   )
