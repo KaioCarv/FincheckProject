@@ -1,7 +1,9 @@
-import { Input } from "../../../../../../components/Input";
-import { InputCurrency } from "../../../../../../components/InputCurrency";
-import { Modal } from "../../../../../../components/Modal";
-import { Select } from "../../../../../../components/Select";
+import { Button } from "../../../../components/Button";
+import { ColorsDropDownInput } from "../../../../components/ColorsDropDownInput";
+import { Input } from "../../../../components/Input";
+import { InputCurrency } from "../../../../components/InputCurrency";
+import { Modal } from "../../../../components/Modal";
+import { Select } from "../../../../components/Select";
 import { useNewAccountModalController } from "./useNewAccountModalController";
 
 export function NewAccountModal(){
@@ -48,7 +50,11 @@ export function NewAccountModal(){
             },
           ]}
           />
+          <ColorsDropDownInput/>
         </div>
+          <Button type="submit" className="w-full mt-6">
+            Criar
+          </Button>
      </form>
     </Modal>
   )

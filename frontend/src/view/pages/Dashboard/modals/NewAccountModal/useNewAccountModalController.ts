@@ -1,4 +1,4 @@
-import { useDashboard } from "../../useDashboard";
+import { useDashboard } from "../../components/DashboardContext/useDashboard";
 
 export function useNewAccountModalController(){
   const {
