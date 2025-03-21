@@ -18,7 +18,8 @@ export function Accounts(){
    toggleValuesVisibility,
    isLoading,
    Accounts,
-    openNewAccountModal,
+  openNewAccountModal,
+  currentBalance,
   } = useAccountsController();
   return (
     <div className="bg-teal-900 rounded-2xl w-full h-full md:p-10 px-4 py-8 flex flex-col">
@@ -38,7 +39,7 @@ export function Accounts(){
           "text-2xl tracking-[-1px] text-white",
           !areValuesVisible && 'blur-md',
         )}>
-         {formatCurrency(1000)}
+         {formatCurrency(currentBalance)}
         </strong>
 
         <button className="w-8 h-8 flex items-center justify-center"
@@ -93,33 +94,13 @@ export function Accounts(){
                  isEnd={sliderState.isEnd}
                  />
              </div>
+           {Accounts.map(account => (
+            <SwiperSlide key={account.id}>
+              <AccountCard data={account}/>
+             </SwiperSlide>
+           ))}
 
-             <SwiperSlide>
-                     <AccountCard
-                     color="#7950F2"
-                     name="Nubank"
-                     balance={1000.23}
-                     type="CHECKING"
-                     />
-           </SwiperSlide>
 
-           <SwiperSlide>
-                   <AccountCard
-                     color="#333"
-                     name="XP"
-                     balance={1000.23}
-                     type="INVESTMENT"
-                     />
-           </SwiperSlide>
-
-           <SwiperSlide>
-                   <AccountCard
-                     color="#0f0"
-                     name="Carteira"
-                     balance={1000.23}
-                     type="CASH"
-                   />
-           </SwiperSlide>
           </Swiper>
            </div>
         )}

@@ -4,7 +4,7 @@ import { cn } from '../../app/utils/cd';
 
 interface InputCurrencyProps {
   error?: string;
-  value?: string
+  value?: string;
   onChange?(value: string): void;
 }
 

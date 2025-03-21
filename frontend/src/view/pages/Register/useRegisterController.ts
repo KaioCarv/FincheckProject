@@ -24,7 +24,7 @@ const {
   resolver: zodResolver(schema)
 });
 
-const {mutateAsync, isPending} = useMutation({
+const {mutateAsync, isLoading} = useMutation({
   mutationFn: async (data: SignupParams) => {
     return authService.signup(data)
   },
@@ -41,6 +41,6 @@ try{
  }
   })
 
- return {handleSubmit, register, errors, isPending };
+ return {handleSubmit, register, errors, isLoading };
 
 }

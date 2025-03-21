@@ -4,7 +4,7 @@ import { Input } from "../../components/Input";
 import { useLoginController } from "./useLoginController";
 
 export function Login(){
-  const {handleSubmit, register, errors, isPending} = useLoginController();
+  const {handleSubmit, register, errors, isLoading} = useLoginController();
   return(
     <>
     <header className="flex flex-col items-center gap-4 text-center">
@@ -41,7 +41,7 @@ export function Login(){
        error={errors.password?.message}
        {...register('password')}
         />
-      <Button type="submit" className="mt-2" isPending={isPending}>
+      <Button type="submit" className="mt-2" isPending={isLoading}>
         Entrar
       </Button>
     </form>
