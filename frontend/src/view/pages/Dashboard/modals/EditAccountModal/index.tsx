@@ -1,11 +1,13 @@
 import { Controller } from "react-hook-form";
 import { Button } from "../../../../components/Button";
 import { ColorsDropDownInput } from "../../../../components/ColorsDropDownInput";
+import { ConfirmDeleteModal } from "../../../../components/ConfirmDeleteModal";
+import { TrashIcon } from "../../../../components/icons/TrashIcon";
 import { Input } from "../../../../components/Input";
 import { InputCurrency } from "../../../../components/InputCurrency";
 import { Modal } from "../../../../components/Modal";
 import { Select } from "../../../../components/Select";
-import { useNewAccountModalController } from "./useNewAccountModalController";
+import { useEditAccountModalController } from "./useEditAccountModalController";
 
 export function EditAccountModal(){
   const {
@@ -16,13 +18,37 @@ export function EditAccountModal(){
     register,
     control,
     isLoading,
-  } = useNewAccountModalController()
+    isDeleteModalOpen,
+    handleOpenDeleteModal,
+    handleCloseDeleteModal,
+    handleDeleteAccount,
+    isLoadingDelete,
+  } = useEditAccountModalController()
+
+  if(isDeleteModalOpen){
+    return (
+    <ConfirmDeleteModal
+      isLoading={isLoadingDelete}
+      onConfirm={handleDeleteAccount}
+      onClose={handleCloseDeleteModal}
+      title="Tem certeza que deseja excluir esta conta?"
+      description=" Ao excluir a conta, também serão excluídos todos os registros de receita e despesas relacionados."
+    />
+  )
+  }
+
   return (
     <Modal
       title="Editar Conta"
       open={isEditAccountModalOpen}
       onClose={closeEditAccountModal}
-    >
+      rightAction={(
+        <button onClick={handleOpenDeleteModal}>
+          <TrashIcon className="w-6 h-6 text-red-900"/>
+        </button>
+      )}
+      >
+
      <form onSubmit={handleSubmit}>
          <div>
           <span className="text-gray-600 tracking-[-0.5px] text-xs">Saldo inicial</span>
@@ -31,7 +57,7 @@ export function EditAccountModal(){
               <Controller
                 control={control}
                 name="initialBalance"
-                defaultValue="0"
+                defaultValue={0}
                 render={({field: {onChange, value} }) => (
                   <InputCurrency
                   error={errors.initialBalance?.message}
@@ -96,7 +122,7 @@ export function EditAccountModal(){
 
         </div>
           <Button type="submit" className="w-full mt-6" isPending={isLoading}>
-            Criar
+            Salvar
           </Button>
      </form>
     </Modal>
