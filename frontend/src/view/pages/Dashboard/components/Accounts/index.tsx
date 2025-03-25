@@ -17,7 +17,7 @@ export function Accounts(){
     areValuesVisible,
    toggleValuesVisibility,
    isLoading,
-   Accounts,
+   accounts,
   openNewAccountModal,
   currentBalance,
   } = useAccountsController();
@@ -51,7 +51,7 @@ export function Accounts(){
      </div>
 
       <div className="flex-1 flex flex-col justify-end mt-10 md:mt-0">
-        {Accounts.length === 0 && (
+        {accounts.length === 0 && (
           <>
                 <div className="mb-4" slot='container-start'>
                  <strong className="text-white tracking-[-1px] text-lg">
@@ -72,7 +72,7 @@ export function Accounts(){
              </button>
           </>
         )}
-        {Accounts.length > 0 && (
+        {accounts.length > 0 && (
            <div>
            <Swiper
                spaceBetween={16}
@@ -94,7 +94,7 @@ export function Accounts(){
                  isEnd={sliderState.isEnd}
                  />
              </div>
-           {Accounts.map(account => (
+           {accounts.map(account => (
             <SwiperSlide key={account.id}>
               <AccountCard data={account}/>
              </SwiperSlide>
