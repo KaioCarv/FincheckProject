@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { Prisma } from '@prisma/client';
+import { type Prisma } from '@prisma/client';
+
 import { PrismaService } from '../prisma.service';
 
 @Injectable()
@@ -11,9 +12,11 @@ export class BankAccountsRepository {
   ) {
     return this.prismaService.bankAccount.findMany(findManyDto);
   }
+
   findFirst(findFirstDto: Prisma.BankAccountFindFirstArgs) {
     return this.prismaService.bankAccount.findFirst(findFirstDto);
   }
+
   create(createDto: Prisma.BankAccountCreateArgs) {
     return this.prismaService.bankAccount.create(createDto);
   }
@@ -21,6 +24,7 @@ export class BankAccountsRepository {
   update(updateDto: Prisma.BankAccountUpdateArgs) {
     return this.prismaService.bankAccount.update(updateDto);
   }
+
   delete(deleteDto: Prisma.BankAccountDeleteArgs) {
     return this.prismaService.bankAccount.delete(deleteDto);
   }

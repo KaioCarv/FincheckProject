@@ -12,13 +12,13 @@ export class BankAccountsService {
   ) {}
 
   create(userId: string, createBankAccountDto: CreateBankAccountDto) {
-    const { color, InitialBalance, name, type } = createBankAccountDto;
+    const { color, initialBalance, name, type } = createBankAccountDto;
 
     return this.bankAccountsRepo.create({
       data: {
-        InitialBalance,
         userId,
         color,
+        initialBalance,
         name,
         type,
       },
@@ -37,6 +37,7 @@ export class BankAccountsService {
         },
       },
     });
+
     return bankAccounts.map(({ transactions, ...bankAccount }) => {
       const totalTransactions = transactions.reduce(
         (acc, transaction) =>
@@ -46,12 +47,12 @@ export class BankAccountsService {
             : -transaction.value),
         0,
       );
-      const currentBalance = bankAccount.InitialBalance + totalTransactions;
+
+      const currentBalance = bankAccount.initialBalance + totalTransactions;
 
       return {
         ...bankAccount,
         currentBalance,
-        transactions,
       };
     });
   }
@@ -66,14 +67,13 @@ export class BankAccountsService {
       bankAccountId,
     );
 
-    const { color, InitialBalance, name, type } = updateBankAccountDto;
+    const { color, initialBalance, name, type } = updateBankAccountDto;
 
     return this.bankAccountsRepo.update({
       where: { id: bankAccountId },
       data: {
-        InitialBalance,
-        userId,
         color,
+        initialBalance,
         name,
         type,
       },

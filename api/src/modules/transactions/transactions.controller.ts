@@ -26,10 +26,10 @@ export class TransactionsController {
 
   @Post()
   create(
-    @ActiveUserId() userid: string,
+    @ActiveUserId() userId: string,
     @Body() createTransactionDto: CreateTransactionDto,
   ) {
-    return this.transactionsService.create(userid, createTransactionDto);
+    return this.transactionsService.create(userId, createTransactionDto);
   }
 
   @Get()

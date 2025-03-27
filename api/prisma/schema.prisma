@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -36,13 +30,14 @@ enum BankAccountType {
 
 model BankAccount {
   id             String          @id @default(uuid()) @db.Uuid
+  userId         String          @map("user_id") @db.Uuid
   name           String
-  InitialBalance Float           @map("initial_balance")
+  initialBalance Float           @map("initial_balance")
   type           BankAccountType
   color          String
-  user           User            @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId         String          @map("user_id") @db.Uuid
   transactions   Transaction[]
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("bank_accounts")
 }
@@ -60,8 +55,9 @@ model Category {
   name         String
   icon         String
   type         TransactionType
-  user         User            @relation(fields: [userId], references: [id], onDelete: Cascade)
   transactions Transaction[]
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("categories")
 }
@@ -80,5 +76,5 @@ model Transaction {
   bankAccount BankAccount @relation(fields: [bankAccountId], references: [id], onDelete: Cascade)
   category    Category?   @relation(fields: [categoryId], references: [id], onDelete: SetNull)
 
-  @@map("transaction")
+  @@map("transactions")
 }

@@ -20,7 +20,7 @@ export class TransactionsService {
     const { bankAccountId, categoryId, date, name, type, value } =
       createTransactionDto;
 
-    await this.validateEntitiesOwnerShip({
+    await this.validateEntitiesOwnership({
       userId,
       bankAccountId,
       categoryId,
@@ -58,6 +58,15 @@ export class TransactionsService {
           lt: new Date(Date.UTC(filters.year, filters.month + 1)),
         },
       },
+      include: {
+        category: {
+          select: {
+            id: true,
+            name: true,
+            icon: true,
+          },
+        },
+      },
     });
   }
 
@@ -69,12 +78,13 @@ export class TransactionsService {
     const { bankAccountId, categoryId, date, name, type, value } =
       updateTransactionDto;
 
-    await this.validateEntitiesOwnerShip({
+    await this.validateEntitiesOwnership({
       userId,
       bankAccountId,
       categoryId,
       transactionId,
     });
+
     return this.transactionsRepo.update({
       where: { id: transactionId },
       data: {
@@ -89,7 +99,7 @@ export class TransactionsService {
   }
 
   async remove(userId: string, transactionId: string) {
-    await this.validateEntitiesOwnerShip({ userId, transactionId });
+    await this.validateEntitiesOwnership({ userId, transactionId });
 
     await this.transactionsRepo.delete({
       where: { id: transactionId },
@@ -98,7 +108,7 @@ export class TransactionsService {
     return null;
   }
 
-  private async validateEntitiesOwnerShip({
+  private async validateEntitiesOwnership({
     userId,
     bankAccountId,
     categoryId,

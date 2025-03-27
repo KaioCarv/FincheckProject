@@ -13,7 +13,7 @@ export class CreateBankAccountDto {
   name: string;
   @IsNumber()
   @IsNotEmpty()
-  InitialBalance: number;
+  initialBalance: number;
   @IsNotEmpty()
   @IsEnum(BankAccountType)
   type: BankAccountType;
