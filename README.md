@@ -1,4 +1,4 @@
-![Logo](frontend/src/assets/Fincheck.mp4)
+![Video](frontend/src/assets/Fincheck.mp4)
 
 # Funcionalidades
 - Cadastro, autenticação e recuperação de senha de usuários
