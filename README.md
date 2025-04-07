@@ -1,4 +1,5 @@
-![Video](frontend/src/assets/Fincheck.mp4)
+https://github.com/user-attachments/assets/9a3c0769-9421-46cd-a3c4-6e0ebaa6f9df
+
 
 # Funcionalidades
 - Cadastro, autenticação e recuperação de senha de usuários
